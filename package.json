@@ -30,5 +30,15 @@
         "path": "/ranger-service"
       }
     }
+  },
+  "API_BUSINESS_PARTNER": {
+    "kind": "odata-v2",
+    "model": "srv/external/API_BUSINESS_PARTNER",
+    "[sandbox]": {
+      "credentials": {
+        "url": "https://6bbdf26ftrial-htf-srv.cfapps.us10-001.hana.ondemand.com/",
+        "path": "/ranger-service"
+      }
+    }
   }
 }
