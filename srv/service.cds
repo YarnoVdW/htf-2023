@@ -1,9 +1,8 @@
-using {rangerschedule as my} from '../db/schema';
+using {edmx as rase} from '../srv/external/edmx';
 
-@path: 'service/rangerSchedule'
 service RangerService {
 
-    entity Pollution @(restrict: [
+    entity Pollutions @(restrict: [
         {
             grant: ['READ'],
             to   : ['viewer']
@@ -12,7 +11,7 @@ service RangerService {
             grant: ['*'],
             to   : ['admin']
         }
-    ]) as projection on my.Pollution;
+    ]) as projection on rase.Pollutions;
 
     entity PollutionCategories @(restrict: [
         {
@@ -23,7 +22,7 @@ service RangerService {
             grant: ['*'],
             to   : ['admin']
         }
-    ]) as projection on my.PollutionCategories;
+    ]) as projection on rase.PollutionCategories;
 
     entity PollutionControlTeams @(restrict: [
         {
@@ -34,7 +33,7 @@ service RangerService {
             grant: ['*'],
             to   : ['admin']
         }
-    ]) as projection on my.PollutionControlTeams;
+    ]) as projection on rase.PollutionControlTeams;
 
     entity Rangers @(restrict: [
         {
@@ -45,7 +44,7 @@ service RangerService {
             grant: ['*'],
             to   : ['admin']
         }
-    ]) as projection on my.Rangers;
+    ]) as projection on rase.Rangers;
 
     entity Flags @(restrict: [
         {
@@ -56,7 +55,7 @@ service RangerService {
             grant: ['*'],
             to   : ['admin']
         }
-    ]) as projection on my.Flags;
+    ]) as projection on rase.Flags;
 
     entity CriticalityLevels @(restrict: [
         {
@@ -67,7 +66,7 @@ service RangerService {
             grant: ['*'],
             to   : ['admin']
         }
-    ]) as projection on my.CriticalityLevels;
+    ]) as projection on rase.CriticalityLevels;
 
     entity Countries @(restrict: [
         {
@@ -78,7 +77,7 @@ service RangerService {
             grant: ['*'],
             to   : ['admin']
         }
-    ]) as projection on my.Countries;
+    ]) as projection on rase.Countries;
 
     entity Languages @(restrict: [
         {
@@ -89,5 +88,5 @@ service RangerService {
             grant: ['*'],
             to   : ['admin']
         }
-    ]) as projection on my.Languages;
+    ]) as projection on rase.Languages;
 }
