@@ -20,6 +20,10 @@
       "edmx": {
         "kind": "odata",
         "model": "srv/external/edmx"
+      },
+      "credentials": {
+        "url": "https://6bbdf26ftrial-htf-srv.cfapps.us10-001.hana.ondemand.com",
+        "path": "/ranger-service"
       }
     }
   }
