@@ -6,79 +6,43 @@ using {edmx as rase} from '../srv/external/edmx';
 }]
 service RangerService {
 
-    entity Pollutions          as projection on rase.Pollutions excluding {
+    entity Pollutions            as projection on rase.Pollutions excluding {
         localized,
         texts
     };
 
-    entity PollutionCategories as projection on rase.PollutionCategories excluding {
+    entity PollutionCategories   as projection on rase.PollutionCategories excluding {
         localized,
         texts
     };
 
-//     entity PollutionControlTeams [
-//         {
-//             grant: ['READ'],
-//             to   : ['viewer']
-//         },
-//         {
-//             grant: ['*'],
-//             to   : ['admin']
-//         }
-//     ]) as projection on rase.PollutionControlTeams;
+    entity PollutionControlTeams as projection on rase.PollutionControlTeams excluding {
+        localized,
+        texts
+    };
 
-//     entity Rangers [
-//         {
-//             grant: ['READ'],
-//             to   : ['viewer']
-//         },
-//         {
-//             grant: ['*'],
-//             to   : ['admin']
-//         }
-//     ]) as projection on rase.Rangers;
+    entity Rangers               as projection on rase.Rangers excluding {
+        localized,
+        texts
+    };
 
-//     entity Flags [
-//         {
-//             grant: ['READ'],
-//             to   : ['viewer']
-//         },
-//         {
-//             grant: ['*'],
-//             to   : ['admin']
-//         }
-//     ]) as projection on rase.Flags;
+    entity Flags                 as projection on rase.Flags excluding {
+        localized,
+        texts
+    };
 
-//     entity CriticalityLevels [
-//         {
-//             grant: ['READ'],
-//             to   : ['viewer']
-//         },
-//         {
-//             grant: ['*'],
-//             to   : ['admin']
-//         }
-//     ]) as projection on rase.CriticalityLevels;
+    entity CriticalityLevels     as projection on rase.CriticalityLevels excluding {
+        localized,
+        texts
+    };
 
-//     entity Countries [
-//         {
-//             grant: ['READ'],
-//             to   : ['viewer']
-//         },
-//         {
-//             grant: ['*'],
-//             to   : ['admin']
-//         }
-//     ]) as projection on rase.Countries;
+    entity Countries             as projection on rase.Countries excluding {
+        localized,
+        texts
+    };
 
-//     entity Languages [
-//         {
-//             grant: ['READ'],
-//             to   : ['viewer']
-//         },
-//         {
-//             grant: ['*'],
-//             to   : ['admin']
-//         }
-//     ]) as projection on rase.Languages;
+    entity Languages             as projection on rase.Languages excluding {
+        localized,
+        texts
+    };
 }

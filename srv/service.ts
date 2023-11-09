@@ -11,4 +11,28 @@ export = async (srv: Service) => {
   srv.on("READ", "PollutionCategories", (req) => {
     return rase.run(req.query);
   });
+
+  srv.on("READ", "PollutionControlTeams", (req) => {
+    return rase.run(req.query);
+  });
+
+  srv.on("READ", "Rangers", (req) => {
+    return rase.run(req.query);
+  });
+
+  srv.on("READ", "Flags", (req) => {
+    return rase.run(req.query);
+  });
+
+  srv.on("READ", "CriticalityLevels", (req) => {
+    return rase.run(req.query);
+  });
+
+  srv.on("READ", "Countries", (req) => {
+    return rase.run(req.query);
+  });
+
+  srv.on("READ", "Languages", (req) => {
+    return rase.run(req.query);
+  });
 };
