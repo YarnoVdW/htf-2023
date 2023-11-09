@@ -1,53 +1,93 @@
-using {lectureschedule as my} from '../db/schema';
+using {rangerschedule as my} from '../db/schema';
 
-@path : 'service/lectureSchedule'
-service LectureService {
+@path: 'service/rangerSchedule'
+service RangerService {
 
-    entity Lectures @(restrict : [
+    entity Pollution @(restrict: [
         {
-            grant : ['READ'],
-            to    : ['viewer']
+            grant: ['READ'],
+            to   : ['viewer']
         },
         {
-            grant : ['*'],
-            to    : ['admin']
+            grant: ['*'],
+            to   : ['admin']
         }
-    ]) as projection on my.Lectures;
+    ]) as projection on my.Pollution;
 
-    entity Rooms @(restrict : [
+    entity PollutionCategories @(restrict: [
         {
-            grant : ['READ'],
-            to    : ['viewer']
+            grant: ['READ'],
+            to   : ['viewer']
         },
         {
-            grant : ['*'],
-            to    : ['admin']
+            grant: ['*'],
+            to   : ['admin']
         }
-    ]) as projection on my.Rooms;
+    ]) as projection on my.PollutionCategories;
 
-    entity Courses @(restrict : [
+    entity PollutionControlTeams @(restrict: [
         {
-            grant : ['READ'],
-            to    : ['viewer']
+            grant: ['READ'],
+            to   : ['viewer']
         },
         {
-            grant : ['*'],
-            to    : ['admin']
+            grant: ['*'],
+            to   : ['admin']
         }
-    ]) as projection on my.Courses;
+    ]) as projection on my.PollutionControlTeams;
 
-    entity Professors @(restrict : [
+    entity Rangers @(restrict: [
         {
-            grant : ['READ'],
-            to    : ['viewer']
+            grant: ['READ'],
+            to   : ['viewer']
         },
         {
-            grant : ['*'],
-            to    : ['admin']
+            grant: ['*'],
+            to   : ['admin']
         }
-    ]) as projection on my.Professors;
+    ]) as projection on my.Rangers;
 
-    @requires : 'admin'
-    action createEvent(reqSeats : Integer, date : DateTime) returns Lectures;
+    entity Flags @(restrict: [
+        {
+            grant: ['READ'],
+            to   : ['viewer']
+        },
+        {
+            grant: ['*'],
+            to   : ['admin']
+        }
+    ]) as projection on my.Flags;
 
+    entity CriticalityLevels @(restrict: [
+        {
+            grant: ['READ'],
+            to   : ['viewer']
+        },
+        {
+            grant: ['*'],
+            to   : ['admin']
+        }
+    ]) as projection on my.CriticalityLevels;
+
+    entity Countries @(restrict: [
+        {
+            grant: ['READ'],
+            to   : ['viewer']
+        },
+        {
+            grant: ['*'],
+            to   : ['admin']
+        }
+    ]) as projection on my.Countries;
+
+    entity Languages @(restrict: [
+        {
+            grant: ['READ'],
+            to   : ['viewer']
+        },
+        {
+            grant: ['*'],
+            to   : ['admin']
+        }
+    ]) as projection on my.Languages;
 }
