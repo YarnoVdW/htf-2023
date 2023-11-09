@@ -45,4 +45,9 @@ service RangerService {
         localized,
         texts
     };
+
+    entity Locations             as projection on rase.Locations excluding {
+        localized,
+        texts
+    };
 }

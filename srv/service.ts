@@ -35,4 +35,8 @@ export = async (srv: Service) => {
   srv.on("READ", "Languages", (req) => {
     return rase.run(req.query);
   });
+
+  srv.on("READ", "Locations", (req) => {
+    return rase.run(req.query);
+  });
 };
