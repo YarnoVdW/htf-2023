@@ -1,14 +1,14 @@
-import cds, { Service } from "@sap/cds/apis/services";
+import { Service } from "@sap/cds/apis/services";
+import cds from "@sap/cds";
 
-const RangerService = async (srv: Service) => {
-  srv.on("READ", "Pollutions", async (req) => {
-    const data = req.data,
-      { ID, description,category_ID, criticality_code, contaminationPercentage, location_id } = data;
-      return data;
+export = async (srv: Service) => {
+  const rase = await cds.connect.to("edmx");
+
+  srv.on("READ", "Pollutions", (req) => {
+    return rase.run(req.query);
   });
 
-};
-
-export default {
-  RangerService,
+  srv.on("READ", "PollutionCategories", (req) => {
+    return rase.run(req.query);
+  });
 };

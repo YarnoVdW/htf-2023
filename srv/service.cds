@@ -1,92 +1,84 @@
 using {edmx as rase} from '../srv/external/edmx';
 
+@protocol: [{
+    path: '/ranger-service',
+    kind: 'odata-v4'
+}]
 service RangerService {
 
-    entity Pollutions @(restrict: [
-        {
-            grant: ['READ'],
-            to   : ['viewer']
-        },
-        {
-            grant: ['*'],
-            to   : ['admin']
-        }
-    ]) as projection on rase.Pollutions;
+    entity Pollutions          as projection on rase.Pollutions excluding {
+        localized,
+        texts
+    };
 
-    entity PollutionCategories @(restrict: [
-        {
-            grant: ['READ'],
-            to   : ['viewer']
-        },
-        {
-            grant: ['*'],
-            to   : ['admin']
-        }
-    ]) as projection on rase.PollutionCategories;
+    entity PollutionCategories as projection on rase.PollutionCategories excluding {
+        localized,
+        texts
+    };
 
-    entity PollutionControlTeams @(restrict: [
-        {
-            grant: ['READ'],
-            to   : ['viewer']
-        },
-        {
-            grant: ['*'],
-            to   : ['admin']
-        }
-    ]) as projection on rase.PollutionControlTeams;
+//     entity PollutionControlTeams [
+//         {
+//             grant: ['READ'],
+//             to   : ['viewer']
+//         },
+//         {
+//             grant: ['*'],
+//             to   : ['admin']
+//         }
+//     ]) as projection on rase.PollutionControlTeams;
 
-    entity Rangers @(restrict: [
-        {
-            grant: ['READ'],
-            to   : ['viewer']
-        },
-        {
-            grant: ['*'],
-            to   : ['admin']
-        }
-    ]) as projection on rase.Rangers;
+//     entity Rangers [
+//         {
+//             grant: ['READ'],
+//             to   : ['viewer']
+//         },
+//         {
+//             grant: ['*'],
+//             to   : ['admin']
+//         }
+//     ]) as projection on rase.Rangers;
 
-    entity Flags @(restrict: [
-        {
-            grant: ['READ'],
-            to   : ['viewer']
-        },
-        {
-            grant: ['*'],
-            to   : ['admin']
-        }
-    ]) as projection on rase.Flags;
+//     entity Flags [
+//         {
+//             grant: ['READ'],
+//             to   : ['viewer']
+//         },
+//         {
+//             grant: ['*'],
+//             to   : ['admin']
+//         }
+//     ]) as projection on rase.Flags;
 
-    entity CriticalityLevels @(restrict: [
-        {
-            grant: ['READ'],
-            to   : ['viewer']
-        },
-        {
-            grant: ['*'],
-            to   : ['admin']
-        }
-    ]) as projection on rase.CriticalityLevels;
+//     entity CriticalityLevels [
+//         {
+//             grant: ['READ'],
+//             to   : ['viewer']
+//         },
+//         {
+//             grant: ['*'],
+//             to   : ['admin']
+//         }
+//     ]) as projection on rase.CriticalityLevels;
 
-    entity Countries @(restrict: [
-        {
-            grant: ['READ'],
-            to   : ['viewer']
-        },
-        {
-            grant: ['*'],
-            to   : ['admin']
-        }
-    ]) as projection on rase.Countries;
+//     entity Countries [
+//         {
+//             grant: ['READ'],
+//             to   : ['viewer']
+//         },
+//         {
+//             grant: ['*'],
+//             to   : ['admin']
+//         }
+//     ]) as projection on rase.Countries;
 
-    entity Languages @(restrict: [
-        {
-            grant: ['READ'],
-            to   : ['viewer']
-        },
-        {
-            grant: ['*'],
-            to   : ['admin']
-        }
-    ]) as projection on rase.Languages;
+//     entity Languages [
+//         {
+//             grant: ['READ'],
+//             to   : ['viewer']
+//         },
+//         {
+//             grant: ['*'],
+//             to   : ['admin']
+//         }
+//     ]) as projection on rase.Languages;
 }
