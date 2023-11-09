@@ -1,0 +1,1084 @@
+{
+ "meta": {
+  "creator": "cds-dk 7.3.2"
+ },
+ "$version": "2.0",
+ "definitions": {
+  "edmx.Pollutions": {
+   "kind": "entity",
+   "@cds.external": true,
+   "@cds.persistence.skip": true,
+   "elements": {
+    "ID": {
+     "key": true,
+     "type": "cds.UUID",
+     "notNull": true
+    },
+    "createdAt": {
+     "type": "cds.Timestamp",
+     "@odata.Precision": 7,
+     "@odata.Type": "Edm.DateTimeOffset",
+     "@UI.HiddenFilter": true,
+     "@Core.Immutable": true,
+     "@Core.Computed": true,
+     "@Common.Label": "Gecreëerd op"
+    },
+    "createdBy": {
+     "type": "cds.String",
+     "length": 255,
+     "@UI.HiddenFilter": true,
+     "@Core.Immutable": true,
+     "@Core.Computed": true,
+     "doc": "Unieke ID van gebruiker",
+     "@Common.Label": "Gecreëerd door"
+    },
+    "modifiedAt": {
+     "type": "cds.Timestamp",
+     "@odata.Precision": 7,
+     "@odata.Type": "Edm.DateTimeOffset",
+     "@UI.HiddenFilter": true,
+     "@Core.Computed": true,
+     "@Common.Label": "Gewijzigd op"
+    },
+    "modifiedBy": {
+     "type": "cds.String",
+     "length": 255,
+     "@UI.HiddenFilter": true,
+     "@Core.Computed": true,
+     "doc": "Unieke ID van gebruiker",
+     "@Common.Label": "Gewijzigd door"
+    },
+    "description": {
+     "type": "cds.LargeString"
+    },
+    "category": {
+     "type": "cds.Association",
+     "@cds.ambiguous": "missing on condition?",
+     "target": "edmx.PollutionCategories",
+     "cardinality": {
+      "max": 1
+     },
+     "on": [
+      {
+       "ref": [
+        "category",
+        "ID"
+       ]
+      },
+      "=",
+      {
+       "ref": [
+        "category_ID"
+       ]
+      }
+     ]
+    },
+    "category_ID": {
+     "type": "cds.UUID"
+    },
+    "criticality": {
+     "type": "cds.Association",
+     "@cds.ambiguous": "missing on condition?",
+     "target": "edmx.CriticalityLevels",
+     "cardinality": {
+      "max": 1
+     },
+     "on": [
+      {
+       "ref": [
+        "criticality",
+        "code"
+       ]
+      },
+      "=",
+      {
+       "ref": [
+        "criticality_code"
+       ]
+      }
+     ]
+    },
+    "criticality_code": {
+     "type": "cds.LargeString",
+     "@Common.ValueList": {
+      "$Type": "Common.ValueListType",
+      "Label": "CriticalityLevels",
+      "CollectionPath": "CriticalityLevels",
+      "Parameters": [
+       {
+        "$Type": "Common.ValueListParameterInOut",
+        "LocalDataProperty": {
+         "=": "criticality_code"
+        },
+        "ValueListProperty": "code"
+       },
+       {
+        "$Type": "Common.ValueListParameterDisplayOnly",
+        "ValueListProperty": "name"
+       }
+      ]
+     }
+    },
+    "contaminationPercentage": {
+     "type": "cds.Decimal"
+    },
+    "location": {
+     "type": "cds.Composition",
+     "@cds.ambiguous": "missing on condition?",
+     "target": "edmx.Locations",
+     "cardinality": {
+      "max": 1
+     },
+     "on": [
+      {
+       "ref": [
+        "location",
+        "ID"
+       ]
+      },
+      "=",
+      {
+       "ref": [
+        "location_ID"
+       ]
+      }
+     ]
+    },
+    "location_ID": {
+     "type": "cds.UUID"
+    },
+    "texts": {
+     "type": "cds.Composition",
+     "@cds.ambiguous": "missing on condition?",
+     "target": "edmx.Pollutions_texts",
+     "cardinality": {
+      "max": "*"
+     }
+    },
+    "localized": {
+     "type": "cds.Association",
+     "@cds.ambiguous": "missing on condition?",
+     "target": "edmx.Pollutions_texts",
+     "cardinality": {
+      "max": 1
+     },
+     "on": [
+      {
+       "ref": [
+        "localized",
+        "ID"
+       ]
+      },
+      "=",
+      {
+       "ref": [
+        "ID"
+       ]
+      }
+     ]
+    }
+   },
+   "@Capabilities.DeleteRestrictions.Deletable": false,
+   "@Capabilities.InsertRestrictions.Insertable": false,
+   "@Capabilities.UpdateRestrictions.Updatable": false
+  },
+  "edmx.PollutionCategories": {
+   "kind": "entity",
+   "@cds.external": true,
+   "@cds.persistence.skip": true,
+   "elements": {
+    "ID": {
+     "key": true,
+     "type": "cds.UUID",
+     "notNull": true
+    },
+    "createdAt": {
+     "type": "cds.Timestamp",
+     "@odata.Precision": 7,
+     "@odata.Type": "Edm.DateTimeOffset",
+     "@UI.HiddenFilter": true,
+     "@Core.Immutable": true,
+     "@Core.Computed": true,
+     "@Common.Label": "Gecreëerd op"
+    },
+    "createdBy": {
+     "type": "cds.String",
+     "length": 255,
+     "@UI.HiddenFilter": true,
+     "@Core.Immutable": true,
+     "@Core.Computed": true,
+     "doc": "Unieke ID van gebruiker",
+     "@Common.Label": "Gecreëerd door"
+    },
+    "modifiedAt": {
+     "type": "cds.Timestamp",
+     "@odata.Precision": 7,
+     "@odata.Type": "Edm.DateTimeOffset",
+     "@UI.HiddenFilter": true,
+     "@Core.Computed": true,
+     "@Common.Label": "Gewijzigd op"
+    },
+    "modifiedBy": {
+     "type": "cds.String",
+     "length": 255,
+     "@UI.HiddenFilter": true,
+     "@Core.Computed": true,
+     "doc": "Unieke ID van gebruiker",
+     "@Common.Label": "Gewijzigd door"
+    },
+    "description": {
+     "type": "cds.LargeString",
+     "@Core.Immutable": true
+    },
+    "icon": {
+     "type": "cds.LargeString",
+     "@Core.Immutable": true
+    },
+    "controlTeam": {
+     "type": "cds.Association",
+     "@cds.ambiguous": "missing on condition?",
+     "target": "edmx.PollutionControlTeams",
+     "cardinality": {
+      "max": 1
+     },
+     "on": [
+      {
+       "ref": [
+        "controlTeam",
+        "ID"
+       ]
+      },
+      "=",
+      {
+       "ref": [
+        "controlTeam_ID"
+       ]
+      }
+     ]
+    },
+    "controlTeam_ID": {
+     "type": "cds.UUID"
+    },
+    "texts": {
+     "type": "cds.Composition",
+     "@cds.ambiguous": "missing on condition?",
+     "target": "edmx.PollutionCategories_texts",
+     "cardinality": {
+      "max": "*"
+     }
+    },
+    "localized": {
+     "type": "cds.Association",
+     "@cds.ambiguous": "missing on condition?",
+     "target": "edmx.PollutionCategories_texts",
+     "cardinality": {
+      "max": 1
+     },
+     "on": [
+      {
+       "ref": [
+        "localized",
+        "ID"
+       ]
+      },
+      "=",
+      {
+       "ref": [
+        "ID"
+       ]
+      }
+     ]
+    }
+   }
+  },
+  "edmx.PollutionControlTeams": {
+   "kind": "entity",
+   "@cds.external": true,
+   "@cds.persistence.skip": true,
+   "elements": {
+    "ID": {
+     "key": true,
+     "type": "cds.UUID",
+     "notNull": true
+    },
+    "createdAt": {
+     "type": "cds.Timestamp",
+     "@odata.Precision": 7,
+     "@odata.Type": "Edm.DateTimeOffset",
+     "@UI.HiddenFilter": true,
+     "@Core.Immutable": true,
+     "@Core.Computed": true,
+     "@Common.Label": "Gecreëerd op"
+    },
+    "createdBy": {
+     "type": "cds.String",
+     "length": 255,
+     "@UI.HiddenFilter": true,
+     "@Core.Immutable": true,
+     "@Core.Computed": true,
+     "doc": "Unieke ID van gebruiker",
+     "@Common.Label": "Gecreëerd door"
+    },
+    "modifiedAt": {
+     "type": "cds.Timestamp",
+     "@odata.Precision": 7,
+     "@odata.Type": "Edm.DateTimeOffset",
+     "@UI.HiddenFilter": true,
+     "@Core.Computed": true,
+     "@Common.Label": "Gewijzigd op"
+    },
+    "modifiedBy": {
+     "type": "cds.String",
+     "length": 255,
+     "@UI.HiddenFilter": true,
+     "@Core.Computed": true,
+     "doc": "Unieke ID van gebruiker",
+     "@Common.Label": "Gewijzigd door"
+    },
+    "name": {
+     "type": "cds.LargeString"
+    },
+    "rangers": {
+     "type": "cds.Association",
+     "@cds.ambiguous": "missing on condition?",
+     "target": "edmx.Rangers",
+     "cardinality": {
+      "max": "*"
+     },
+     "keys": []
+    },
+    "texts": {
+     "type": "cds.Composition",
+     "@cds.ambiguous": "missing on condition?",
+     "target": "edmx.PollutionControlTeams_texts",
+     "cardinality": {
+      "max": "*"
+     }
+    },
+    "localized": {
+     "type": "cds.Association",
+     "@cds.ambiguous": "missing on condition?",
+     "target": "edmx.PollutionControlTeams_texts",
+     "cardinality": {
+      "max": 1
+     },
+     "on": [
+      {
+       "ref": [
+        "localized",
+        "ID"
+       ]
+      },
+      "=",
+      {
+       "ref": [
+        "ID"
+       ]
+      }
+     ]
+    }
+   },
+   "@Capabilities.DeleteRestrictions.Deletable": false,
+   "@Capabilities.InsertRestrictions.Insertable": false,
+   "@Capabilities.UpdateRestrictions.Updatable": false
+  },
+  "edmx.Rangers": {
+   "kind": "entity",
+   "@cds.external": true,
+   "@cds.persistence.skip": true,
+   "elements": {
+    "ID": {
+     "key": true,
+     "type": "cds.UUID",
+     "notNull": true
+    },
+    "createdAt": {
+     "type": "cds.Timestamp",
+     "@odata.Precision": 7,
+     "@odata.Type": "Edm.DateTimeOffset",
+     "@UI.HiddenFilter": true,
+     "@Core.Immutable": true,
+     "@Core.Computed": true,
+     "@Common.Label": "Gecreëerd op"
+    },
+    "createdBy": {
+     "type": "cds.String",
+     "length": 255,
+     "@UI.HiddenFilter": true,
+     "@Core.Immutable": true,
+     "@Core.Computed": true,
+     "doc": "Unieke ID van gebruiker",
+     "@Common.Label": "Gecreëerd door"
+    },
+    "modifiedAt": {
+     "type": "cds.Timestamp",
+     "@odata.Precision": 7,
+     "@odata.Type": "Edm.DateTimeOffset",
+     "@UI.HiddenFilter": true,
+     "@Core.Computed": true,
+     "@Common.Label": "Gewijzigd op"
+    },
+    "modifiedBy": {
+     "type": "cds.String",
+     "length": 255,
+     "@UI.HiddenFilter": true,
+     "@Core.Computed": true,
+     "doc": "Unieke ID van gebruiker",
+     "@Common.Label": "Gewijzigd door"
+    },
+    "firstName": {
+     "type": "cds.LargeString"
+    },
+    "lastName": {
+     "type": "cds.LargeString"
+    },
+    "country": {
+     "type": "cds.Association",
+     "@cds.ambiguous": "missing on condition?",
+     "target": "edmx.Countries",
+     "cardinality": {
+      "max": 1
+     },
+     "on": [
+      {
+       "ref": [
+        "country",
+        "code"
+       ]
+      },
+      "=",
+      {
+       "ref": [
+        "country_code"
+       ]
+      }
+     ],
+     "@Common.Label": "Land/regio",
+     "doc": "Land-/regiocode zoals gespecificeerd door ISO 3166-1"
+    },
+    "country_code": {
+     "type": "cds.String",
+     "length": 3,
+     "@Common.Label": "Land/regio",
+     "@Common.ValueList": {
+      "$Type": "Common.ValueListType",
+      "Label": "Land/regio",
+      "CollectionPath": "Countries",
+      "Parameters": [
+       {
+        "$Type": "Common.ValueListParameterInOut",
+        "LocalDataProperty": {
+         "=": "country_code"
+        },
+        "ValueListProperty": "code"
+       },
+       {
+        "$Type": "Common.ValueListParameterDisplayOnly",
+        "ValueListProperty": "name"
+       }
+      ]
+     },
+     "doc": "Land-/regiocode zoals gespecificeerd door ISO 3166-1"
+    },
+    "language": {
+     "type": "cds.Association",
+     "@cds.ambiguous": "missing on condition?",
+     "target": "edmx.Languages",
+     "cardinality": {
+      "max": 1
+     },
+     "on": [
+      {
+       "ref": [
+        "language",
+        "code"
+       ]
+      },
+      "=",
+      {
+       "ref": [
+        "language_code"
+       ]
+      }
+     ],
+     "@Common.Label": "Taal",
+     "doc": "Taalcode zoals gespecificeerd door ISO 639-1"
+    },
+    "language_code": {
+     "type": "cds.String",
+     "length": 14,
+     "@Common.Label": "Taal",
+     "@Common.ValueList": {
+      "$Type": "Common.ValueListType",
+      "Label": "Taal",
+      "CollectionPath": "Languages",
+      "Parameters": [
+       {
+        "$Type": "Common.ValueListParameterInOut",
+        "LocalDataProperty": {
+         "=": "language_code"
+        },
+        "ValueListProperty": "code"
+       },
+       {
+        "$Type": "Common.ValueListParameterDisplayOnly",
+        "ValueListProperty": "name"
+       }
+      ]
+     },
+     "doc": "Taalcode zoals gespecificeerd door ISO 639-1"
+    },
+    "pollutionControlTeam": {
+     "type": "cds.Association",
+     "@cds.ambiguous": "missing on condition?",
+     "target": "edmx.PollutionControlTeams",
+     "cardinality": {
+      "max": 1
+     },
+     "on": [
+      {
+       "ref": [
+        "pollutionControlTeam",
+        "ID"
+       ]
+      },
+      "=",
+      {
+       "ref": [
+        "pollutionControlTeam_ID"
+       ]
+      }
+     ]
+    },
+    "pollutionControlTeam_ID": {
+     "type": "cds.UUID"
+    }
+   },
+   "@Capabilities.DeleteRestrictions.Deletable": false,
+   "@Capabilities.InsertRestrictions.Insertable": false,
+   "@Capabilities.UpdateRestrictions.Updatable": false
+  },
+  "edmx.Flags": {
+   "kind": "entity",
+   "@cds.external": true,
+   "@cds.persistence.skip": true,
+   "elements": {
+    "code": {
+     "key": true,
+     "type": "cds.LargeString",
+     "notNull": true
+    },
+    "flag": {
+     "type": "cds.LargeString"
+    }
+   },
+   "@Capabilities.DeleteRestrictions.Deletable": false,
+   "@Capabilities.InsertRestrictions.Insertable": false,
+   "@Capabilities.UpdateRestrictions.Updatable": false
+  },
+  "edmx.CriticalityLevels": {
+   "kind": "entity",
+   "@cds.external": true,
+   "@cds.persistence.skip": true,
+   "elements": {
+    "name": {
+     "type": "cds.String",
+     "length": 255,
+     "@Common.Label": "Naam"
+    },
+    "descr": {
+     "type": "cds.String",
+     "length": 1000,
+     "@Common.Label": "Omschrijving"
+    },
+    "code": {
+     "key": true,
+     "type": "cds.LargeString",
+     "notNull": true
+    },
+    "texts": {
+     "type": "cds.Composition",
+     "@cds.ambiguous": "missing on condition?",
+     "target": "edmx.CriticalityLevels_texts",
+     "cardinality": {
+      "max": "*"
+     }
+    },
+    "localized": {
+     "type": "cds.Association",
+     "@cds.ambiguous": "missing on condition?",
+     "target": "edmx.CriticalityLevels_texts",
+     "cardinality": {
+      "max": 1
+     },
+     "on": [
+      {
+       "ref": [
+        "localized",
+        "code"
+       ]
+      },
+      "=",
+      {
+       "ref": [
+        "code"
+       ]
+      }
+     ]
+    }
+   },
+   "@UI.Identification": [
+    {
+     "$Type": "UI.DataField",
+     "Value": {
+      "=": "name"
+     }
+    }
+   ]
+  },
+  "edmx.Locations": {
+   "kind": "entity",
+   "@cds.external": true,
+   "@cds.persistence.skip": true,
+   "elements": {
+    "ID": {
+     "key": true,
+     "type": "cds.UUID",
+     "notNull": true
+    },
+    "longitude": {
+     "type": "cds.LargeString"
+    },
+    "latitude": {
+     "type": "cds.LargeString"
+    },
+    "description": {
+     "type": "cds.LargeString"
+    },
+    "country": {
+     "type": "cds.Association",
+     "@cds.ambiguous": "missing on condition?",
+     "target": "edmx.Countries",
+     "cardinality": {
+      "max": 1
+     },
+     "on": [
+      {
+       "ref": [
+        "country",
+        "code"
+       ]
+      },
+      "=",
+      {
+       "ref": [
+        "country_code"
+       ]
+      }
+     ],
+     "@Common.Label": "Land/regio",
+     "doc": "Land-/regiocode zoals gespecificeerd door ISO 3166-1"
+    },
+    "country_code": {
+     "type": "cds.String",
+     "length": 3,
+     "@Common.Label": "Land/regio",
+     "@Common.ValueList": {
+      "$Type": "Common.ValueListType",
+      "Label": "Land/regio",
+      "CollectionPath": "Countries",
+      "Parameters": [
+       {
+        "$Type": "Common.ValueListParameterInOut",
+        "LocalDataProperty": {
+         "=": "country_code"
+        },
+        "ValueListProperty": "code"
+       },
+       {
+        "$Type": "Common.ValueListParameterDisplayOnly",
+        "ValueListProperty": "name"
+       }
+      ]
+     },
+     "doc": "Land-/regiocode zoals gespecificeerd door ISO 3166-1"
+    },
+    "texts": {
+     "type": "cds.Composition",
+     "@cds.ambiguous": "missing on condition?",
+     "target": "edmx.Locations_texts",
+     "cardinality": {
+      "max": "*"
+     }
+    },
+    "localized": {
+     "type": "cds.Association",
+     "@cds.ambiguous": "missing on condition?",
+     "target": "edmx.Locations_texts",
+     "cardinality": {
+      "max": 1
+     },
+     "on": [
+      {
+       "ref": [
+        "localized",
+        "ID"
+       ]
+      },
+      "=",
+      {
+       "ref": [
+        "ID"
+       ]
+      }
+     ]
+    }
+   }
+  },
+  "edmx.Countries": {
+   "kind": "entity",
+   "@cds.external": true,
+   "@cds.persistence.skip": true,
+   "elements": {
+    "name": {
+     "type": "cds.String",
+     "length": 255,
+     "@Common.Label": "Naam"
+    },
+    "descr": {
+     "type": "cds.String",
+     "length": 1000,
+     "@Common.Label": "Omschrijving"
+    },
+    "code": {
+     "key": true,
+     "type": "cds.String",
+     "length": 3,
+     "notNull": true,
+     "@Common.Text": {
+      "=": "name"
+     },
+     "@Common.Label": "Land-/regiocode"
+    },
+    "flag": {
+     "type": "cds.Association",
+     "@cds.ambiguous": "missing on condition?",
+     "target": "edmx.Flags",
+     "cardinality": {
+      "max": 1
+     },
+     "on": [
+      {
+       "ref": [
+        "flag",
+        "code"
+       ]
+      },
+      "=",
+      {
+       "ref": [
+        "flag_code"
+       ]
+      }
+     ]
+    },
+    "flag_code": {
+     "type": "cds.LargeString"
+    },
+    "texts": {
+     "type": "cds.Composition",
+     "@cds.ambiguous": "missing on condition?",
+     "target": "edmx.Countries_texts",
+     "cardinality": {
+      "max": "*"
+     }
+    },
+    "localized": {
+     "type": "cds.Association",
+     "@cds.ambiguous": "missing on condition?",
+     "target": "edmx.Countries_texts",
+     "cardinality": {
+      "max": 1
+     },
+     "on": [
+      {
+       "ref": [
+        "localized",
+        "code"
+       ]
+      },
+      "=",
+      {
+       "ref": [
+        "code"
+       ]
+      }
+     ]
+    }
+   },
+   "@UI.Identification": [
+    {
+     "$Type": "UI.DataField",
+     "Value": {
+      "=": "name"
+     }
+    }
+   ]
+  },
+  "edmx.Languages": {
+   "kind": "entity",
+   "@cds.external": true,
+   "@cds.persistence.skip": true,
+   "elements": {
+    "name": {
+     "type": "cds.String",
+     "length": 255,
+     "@Common.Label": "Naam"
+    },
+    "descr": {
+     "type": "cds.String",
+     "length": 1000,
+     "@Common.Label": "Omschrijving"
+    },
+    "code": {
+     "key": true,
+     "type": "cds.String",
+     "length": 14,
+     "notNull": true,
+     "@Common.Text": {
+      "=": "name"
+     },
+     "@Common.Label": "Taalcode"
+    },
+    "texts": {
+     "type": "cds.Composition",
+     "@cds.ambiguous": "missing on condition?",
+     "target": "edmx.Languages_texts",
+     "cardinality": {
+      "max": "*"
+     }
+    },
+    "localized": {
+     "type": "cds.Association",
+     "@cds.ambiguous": "missing on condition?",
+     "target": "edmx.Languages_texts",
+     "cardinality": {
+      "max": 1
+     },
+     "on": [
+      {
+       "ref": [
+        "localized",
+        "code"
+       ]
+      },
+      "=",
+      {
+       "ref": [
+        "code"
+       ]
+      }
+     ]
+    }
+   },
+   "@UI.Identification": [
+    {
+     "$Type": "UI.DataField",
+     "Value": {
+      "=": "name"
+     }
+    }
+   ]
+  },
+  "edmx.Pollutions_texts": {
+   "kind": "entity",
+   "@cds.external": true,
+   "@cds.persistence.skip": true,
+   "elements": {
+    "locale": {
+     "key": true,
+     "type": "cds.String",
+     "length": 14,
+     "notNull": true,
+     "@Common.Label": "Taalcode"
+    },
+    "ID": {
+     "key": true,
+     "type": "cds.UUID",
+     "notNull": true
+    },
+    "description": {
+     "type": "cds.LargeString"
+    }
+   }
+  },
+  "edmx.PollutionCategories_texts": {
+   "kind": "entity",
+   "@cds.external": true,
+   "@cds.persistence.skip": true,
+   "elements": {
+    "locale": {
+     "key": true,
+     "type": "cds.String",
+     "length": 14,
+     "notNull": true,
+     "@Common.Label": "Taalcode"
+    },
+    "ID": {
+     "key": true,
+     "type": "cds.UUID",
+     "notNull": true
+    },
+    "description": {
+     "type": "cds.LargeString",
+     "@Core.Immutable": true
+    }
+   }
+  },
+  "edmx.PollutionControlTeams_texts": {
+   "kind": "entity",
+   "@cds.external": true,
+   "@cds.persistence.skip": true,
+   "elements": {
+    "locale": {
+     "key": true,
+     "type": "cds.String",
+     "length": 14,
+     "notNull": true,
+     "@Common.Label": "Taalcode"
+    },
+    "ID": {
+     "key": true,
+     "type": "cds.UUID",
+     "notNull": true
+    },
+    "name": {
+     "type": "cds.LargeString"
+    }
+   }
+  },
+  "edmx.CriticalityLevels_texts": {
+   "kind": "entity",
+   "@cds.external": true,
+   "@cds.persistence.skip": true,
+   "elements": {
+    "locale": {
+     "key": true,
+     "type": "cds.String",
+     "length": 14,
+     "notNull": true,
+     "@Common.Label": "Taalcode"
+    },
+    "name": {
+     "type": "cds.String",
+     "length": 255,
+     "@Common.Label": "Naam"
+    },
+    "descr": {
+     "type": "cds.String",
+     "length": 1000,
+     "@Common.Label": "Omschrijving"
+    },
+    "code": {
+     "key": true,
+     "type": "cds.LargeString",
+     "notNull": true
+    }
+   }
+  },
+  "edmx.Locations_texts": {
+   "kind": "entity",
+   "@cds.external": true,
+   "@cds.persistence.skip": true,
+   "elements": {
+    "locale": {
+     "key": true,
+     "type": "cds.String",
+     "length": 14,
+     "notNull": true,
+     "@Common.Label": "Taalcode"
+    },
+    "ID": {
+     "key": true,
+     "type": "cds.UUID",
+     "notNull": true
+    },
+    "description": {
+     "type": "cds.LargeString"
+    }
+   }
+  },
+  "edmx.Countries_texts": {
+   "kind": "entity",
+   "@cds.external": true,
+   "@cds.persistence.skip": true,
+   "elements": {
+    "locale": {
+     "key": true,
+     "type": "cds.String",
+     "length": 14,
+     "notNull": true,
+     "@Common.Label": "Taalcode"
+    },
+    "name": {
+     "type": "cds.String",
+     "length": 255,
+     "@Common.Label": "Naam"
+    },
+    "descr": {
+     "type": "cds.String",
+     "length": 1000,
+     "@Common.Label": "Omschrijving"
+    },
+    "code": {
+     "key": true,
+     "type": "cds.String",
+     "length": 3,
+     "notNull": true,
+     "@Common.Text": {
+      "=": "name"
+     },
+     "@Common.Label": "Land-/regiocode"
+    }
+   }
+  },
+  "edmx.Languages_texts": {
+   "kind": "entity",
+   "@cds.external": true,
+   "@cds.persistence.skip": true,
+   "elements": {
+    "locale": {
+     "key": true,
+     "type": "cds.String",
+     "length": 14,
+     "notNull": true,
+     "@Common.Label": "Taalcode"
+    },
+    "name": {
+     "type": "cds.String",
+     "length": 255,
+     "@Common.Label": "Naam"
+    },
+    "descr": {
+     "type": "cds.String",
+     "length": 1000,
+     "@Common.Label": "Omschrijving"
+    },
+    "code": {
+     "key": true,
+     "type": "cds.String",
+     "length": 14,
+     "notNull": true,
+     "@Common.Text": {
+      "=": "name"
+     },
+     "@Common.Label": "Taalcode"
+    }
+   }
+  },
+  "edmx": {
+   "kind": "service",
+   "@cds.external": true
+  }
+ }
+}

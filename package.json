@@ -1,5 +1,5 @@
-
-{  "name": "htf-backend",
+{
+  "name": "htf-backend",
   "version": "1.0.0",
   "license": "UNLICENSED",
   "private": true,
@@ -18,5 +18,13 @@
   },
   "workspaces": [
     "app/*"
-  ]
+  ],
+  "cds": {
+    "requires": {
+      "edmx": {
+        "kind": "odata",
+        "model": "srv/external/edmx"
+      }
+    }
+  }
 }
