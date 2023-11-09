@@ -1,0 +1,22 @@
+
+{  "name": "htf-backend",
+  "version": "1.0.0",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@sap-cloud-sdk/http-client": "^3.4.0",
+    "@sap/cds": "^7",
+    "express": "^4"
+  },
+  "devDependencies": {
+    "@cap-js/sqlite": "^1",
+    "@sap/cds-dk": "^7",
+    "cds-plugin-ui5": "^0.2.1"
+  },
+  "scripts": {
+    "start": "cds-ts watch"
+  },
+  "workspaces": [
+    "app/*"
+  ]
+}
